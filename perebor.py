@@ -14,6 +14,7 @@ try:
                 p = False
             else:
                 x = str(input('Сообщение некорректно, введите новое'))
+                dlina = len(x)
                 if " " in x:
                     x.remove(' ')
                 x = x.lower()
@@ -21,25 +22,14 @@ try:
                 p = True
 except(IndexError):
     dlina = len(x)
-    if " " in x:
-        x.remove(' ')
-    for i in range(dlina):
-        if x[i] in alpabet:
-            print('Сообщение корректно')
-            break
-        else:
-            x = str(input('Сообщение некорректно, введите новое'))
-            x = x.lower()
-            if " " in x:
-                x.remove(' ')
-            x = list(x)
+    p = True
+
 print('rot = ')
 rot = int(input())
 for i in range(len(x)):
     d = 0
     while alpabet[d] != x[i]:
         d += 1
-        if d == 26:
-            d = 0
+
     x[i] = alpabet[(d+rot) % 26]
 print('Ваша закодированная строка',*x)
