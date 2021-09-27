@@ -4,15 +4,27 @@ x = str(input('Введите сообщение на английском яз�
 x = x.lower()
 x = list(x)
 p = True
-while p:
-    for i in range(len(x)):
+try:
+    while p:
+        dlina = len(x)
+        for i in range(dlina):
+            if x[i] in alpabet:
+                p = False
+            else:
+                x = str(input('Сообщение некорректно, введите новое'))
+                x = x.lower()
+                x = list(x)
+                p = True
+except(IndexError):
+    dlina = len(x)
+    for i in range(dlina):
         if x[i] in alpabet:
-            p = False
+            print('Сообщение корректно')
+            break
         else:
             x = str(input('Сообщение некорректно, введите новое'))
             x = x.lower()
             x = list(x)
-            p = True
 print('rot = ')
 rot = int(input())
 if " " in x:
